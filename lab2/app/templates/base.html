@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Лабораторная работа № 2</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="{{ url_for('index') }}">ЛР2</a>
+    <div class="navbar-nav">
+      <a class="nav-link" href="{{ url_for('url_params') }}">URL параметры</a>
+      <a class="nav-link" href="{{ url_for('headers') }}">Заголовки</a>
+      <a class="nav-link" href="{{ url_for('cookies') }}">Cookie</a>
+      <a class="nav-link" href="{{ url_for('login') }}">Авторизация</a>
+      <a class="nav-link" href="{{ url_for('phone') }}">Телефон</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container my-4">
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="bg-light mt-5 py-3 border-top">
+  <div class="container text-muted">
+    Остапенко Святослав Русланович, группа 241-327
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

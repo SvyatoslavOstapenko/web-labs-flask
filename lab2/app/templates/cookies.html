@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Cookie (request.cookies)</h2>
+
+{% if cookies %}
+  <table class="table table-bordered">
+    <thead><tr><th>Cookie</th><th>Значение</th></tr></thead>
+    <tbody>
+      {% for k, v in cookies.items() %}
+        <tr><td>{{ k }}</td><td>{{ v }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="text-muted">Если demo_cookie не видно — обнови страницу (F5).</div>
+{% else %}
+  <div class="alert alert-info">Cookie пока нет. Обнови страницу (F5).</div>
+{% endif %}
+{% endblock %}

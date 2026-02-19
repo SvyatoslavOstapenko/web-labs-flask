@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Параметры URL (request.args)</h2>
+
+{% if args %}
+  <table class="table table-bordered">
+    <thead><tr><th>Ключ</th><th>Значение</th></tr></thead>
+    <tbody>
+      {% for k, v in args.items() %}
+        <tr><td>{{ k }}</td><td>{{ v }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-info">Параметров нет. Пример: <code>?a=1&b=2</code></div>
+{% endif %}
+{% endblock %}

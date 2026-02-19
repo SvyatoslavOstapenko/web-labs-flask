@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Форма авторизации (параметры формы)</h2>
+
+<form method="post" class="mb-4">
+  <div class="mb-3">
+    <label class="form-label">Логин</label>
+    <input name="login" class="form-control" value="{{ login_value }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Пароль</label>
+    <input name="password" type="password" class="form-control" value="{{ password_value }}">
+  </div>
+  <button class="btn btn-primary" type="submit">Отправить</button>
+</form>
+
+{% if submitted %}
+  <h5>Полученные данные формы (request.form)</h5>
+  <ul>
+    <li><b>Логин:</b> {{ login_value }}</li>
+    <li><b>Пароль:</b> {{ password_value }}</li>
+  </ul>
+{% endif %}
+{% endblock %}
