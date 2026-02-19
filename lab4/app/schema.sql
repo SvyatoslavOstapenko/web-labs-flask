@@ -1,0 +1,19 @@
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE IF NOT EXISTS roles (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL UNIQUE,
+  description TEXT
+);
+
+CREATE TABLE IF NOT EXISTS users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  login TEXT NOT NULL UNIQUE,
+  password_hash TEXT NOT NULL,
+  last_name TEXT NOT NULL,
+  first_name TEXT NOT NULL,
+  middle_name TEXT,
+  role_id INTEGER,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE SET NULL
+);

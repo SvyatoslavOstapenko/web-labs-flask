@@ -1,0 +1,49 @@
+{% macro user_form(action, submit_label, roles, form, errors, include_login_password=False) %}
+<form method="post" action="{{ action }}" class="mt-3" style="max-width: 720px;">
+  {% if include_login_password %}
+    <div class="mb-3">
+      <label class="form-label">Логин</label>
+      <input name="login" class="form-control {% if errors.get('login') %}is-invalid{% endif %}" value="{{ form.get('login','') }}">
+      {% if errors.get('login') %}<div class="invalid-feedback">{{ errors.get('login') }}</div>{% endif %}
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Пароль</label>
+      <input name="password" type="password" class="form-control {% if errors.get('password') %}is-invalid{% endif %}" value="{{ form.get('password','') }}">
+      {% if errors.get('password') %}<div class="invalid-feedback">{{ errors.get('password') }}</div>{% endif %}
+    </div>
+  {% endif %}
+
+  <div class="mb-3">
+    <label class="form-label">Фамилия</label>
+    <input name="last_name" class="form-control {% if errors.get('last_name') %}is-invalid{% endif %}" value="{{ form.get('last_name','') }}">
+    {% if errors.get('last_name') %}<div class="invalid-feedback">{{ errors.get('last_name') }}</div>{% endif %}
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Имя</label>
+    <input name="first_name" class="form-control {% if errors.get('first_name') %}is-invalid{% endif %}" value="{{ form.get('first_name','') }}">
+    {% if errors.get('first_name') %}<div class="invalid-feedback">{{ errors.get('first_name') }}</div>{% endif %}
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Отчество</label>
+    <input name="middle_name" class="form-control" value="{{ form.get('middle_name','') }}">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Роль</label>
+    <select name="role_id" class="form-select">
+      <option value="" {% if not form.get('role_id') %}selected{% endif %}>— Нет роли —</option>
+      {% for r in roles %}
+        {% set rid = r['id'] | string %}
+        <option value="{{ r['id'] }}" {% if form.get('role_id') == rid %}selected{% endif %}>
+          {{ r['name'] }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <button class="btn btn-primary" type="submit">{{ submit_label }}</button>
+</form>
+{% endmacro %}

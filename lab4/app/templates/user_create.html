@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import user_form %}
+{% block content %}
+<h2>Создание пользователя</h2>
+{{ user_form(url_for('user_create'), 'Сохранить', roles, form, errors, True) }}
+{% endblock %}
