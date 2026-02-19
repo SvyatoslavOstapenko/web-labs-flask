@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Лабораторная работа №3</h1>
+  <p class="text-muted">Счётчик посещений + аутентификация Flask-Login + секретная страница.</p>
+
+  {% if current_user.is_authenticated %}
+    <div class="alert alert-success">
+      Вы авторизованы.
+    </div>
+  {% else %}
+    <div class="alert alert-secondary">
+      Вы не авторизованы. Перейдите на страницу входа.
+    </div>
+  {% endif %}
+{% endblock %}
