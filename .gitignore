@@ -1,18 +1,15 @@
-# venv
-ve/
-.venv/
-
-# python
-__pycache__/
+# venv / python cache
+**/ve/
+**/.venv/
+**/__pycache__/
 *.pyc
 
 # env
 .env
 
-# IDE
+# ide
 .vscode/
 .idea/
 
-# OS
-.DS_Store
-Thumbs.db
+# db
+*.db
