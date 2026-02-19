@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Журнал посещений</h2>
+
+<div class="mb-3">
+  <a class="btn btn-outline-primary btn-sm" href="{{ url_for('reports.pages_report') }}">Отчёт по страницам</a>
+  <a class="btn btn-outline-primary btn-sm" href="{{ url_for('reports.users_report') }}">Отчёт по пользователям</a>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th style="width: 70px;">№</th>
+      <th>Пользователь</th>
+      <th>Страница</th>
+      <th style="width: 190px;">Дата</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in logs %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ row.who }}</td>
+        <td>{{ row.path }}</td>
+        <td>{{ row.dt }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<nav>
+  <ul class="pagination">
+    <li class="page-item {% if page <= 1 %}disabled{% endif %}">
+      <a class="page-link" href="{{ url_for('reports.journal', page=page-1) }}">Назад</a>
+    </li>
+    <li class="page-item disabled"><span class="page-link">{{ page }} / {{ pages }}</span></li>
+    <li class="page-item {% if page >= pages %}disabled{% endif %}">
+      <a class="page-link" href="{{ url_for('reports.journal', page=page+1) }}">Вперёд</a>
+    </li>
+  </ul>
+</nav>
+
+{% endblock %}
