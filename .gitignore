@@ -13,3 +13,17 @@
 
 # db
 *.db
+
+# Python / venv
+**/ve/
+**/__pycache__/
+**/*.pyc
+
+# Local databases
+**/*.db
+
+# Uploaded media
+**/media/images/*
+
+# Zip archives (не обязаны, но лучше не пушить)
+*.zip
